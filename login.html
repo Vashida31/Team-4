@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .logo-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .logo {
+            width: 350px; /* Adjust as needed */
+            height: auto;
+        }
+
+        .form-section {
+            flex: 5;
+            margin-right: 200px;
+            padding: 20px;
+            max-width: 400px; /* Adjust as needed */
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section h2 {
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn {
+            background-color: #141312;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: grey;
+            color: black;
+        }
+        #time-date {
+            font-size: 24px;
+            text-align: center;
+            margin-top: 20px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-section">
+        <img src="logo.jpg" alt="Logo" class="logo">
+    </div>
+    
+    <div class="form-section">
+        <h2>Login</h2>
+        <form id="login-form">
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <div id="time-date"></div>
+
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <div id="error-message" class="error-message"></div>
+    </div>
+
+    <script>
+        function updateTime() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var day = now.getDate();
+            var month = now.getMonth() + 1; // Month is zero-based
+            var year = now.getFullYear();
+
+            // Format single digits with leading zeros
+            hours = String(hours).padStart(2, '0');
+            minutes = String(minutes).padStart(2, '0');
+            seconds = String(seconds).padStart(2, '0');
+            day = String(day).padStart(2, '0');
+            month = String(month).padStart(2, '0');
+
+            var timeString = hours + ':' + minutes + ':' + seconds;
+            var dateString = day + '/' + month + '/' + year;
+
+            document.getElementById('time-date').innerHTML = timeString + ' ' + dateString;
+        }
+
+        // Update time every second
+        setInterval(updateTime, 1000);
+
+        // Initial call to display time immediately
+        updateTime();
+
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Perform login authentication, for example, with AJAX
+            // This is just a simple example, replace it with actual authentication logic
+            if (username === 'admin' && password === 'password') {
+                // Redirect to admin dashboard
+                window.location.href = 'admindashboard.html'; // Change to the actual URL of admin dashboard
+            } else {
+                // Display error message
+                document.getElementById('error-message').innerText = 'Invalid username or password';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Site</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #222;
+            padding-top: 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            padding: 15px 20px;
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar li a {
+            text-decoration: none;
+            color: #ddd;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .sidebar li a:hover {
+            color: #fff;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+            text-align: center;
+            position: relative;
+        }
+
+        .card-header::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #ff8c00;
+            position: absolute;
+            bottom: -10px;
+            left: calc(50% - 25px);
+            border-radius: 2px;
+        }
+
+        .card-body {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .card-body p {
+            margin: 10px 0;
+        }
+        .logo {
+            max-width: 200px;
+            margin-left: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .top-navbar {
+            background-color: #333;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .top-navbar a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .top-navbar a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <img src="logo.jpg" alt="Logo" class="logo">
+        <ul>
+            <li><a href="admindashboard.html">DASHBOARD</a></li>
+            <li><a href="#">USERS</a></li>
+            <li><a href="#">PRODUCTS</a></li>
+            <li><a href="#">REPORTS</a></li>
+            <li><a href="#">PROFILE</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="header">
+            <h1>Request Site Approval</h1>
+        </div>
+        <div class="top-navbar">
+            <a href="request.html">Requests</a>
+            <a href="tickets.html">Tickets</a>
+            <a href="vendor.html">Vendors</a>
+        </div>
+        <div class="card">
+            <div class="card-header">Request Details</div>
+            <div class="card-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>S.no</th>
+                            <th>Company</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>1</td>
+                            <td>Company A</td>
+                            <td>Category X</td>
+                            <td>Description of Company A</td>
+                            <td>Country 1</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>2</td>
+                            <td>Company B</td>
+                            <td>Category Y</td>
+                            <td>Description of Company B</td>
+                            <td>Country 2</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+                <div class="button-container">
+                    <button onclick="accept()">Accept</button>
+                    <button onclick="deleteRows()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function accept() {
+            // Logic to handle accepting rows
+            alert("Accepted rows");
+        }
+
+        function deleteRows() {
+            // Logic to handle deleting rows
+            var table = document.querySelector("table tbody");
+            var checkboxes = table.querySelectorAll("input[type='checkbox']:checked");
+            checkboxes.forEach(function(checkbox) {
+                var row = checkbox.parentElement.parentElement;
+                row.remove();
+            });
+        }
+    </script>
+</body>
+</html>
